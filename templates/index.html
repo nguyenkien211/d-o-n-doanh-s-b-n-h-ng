@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Dự đoán doanh số bán hàng</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Dự đoán doanh số bán hàng</h1>
+        <form action="/predict" method="POST">
+            <div class="input-group">
+                <label for="tv">Chi phí quảng cáo TV:</label>
+                <input type="number" id="tv" name="tv" step="0.01" required value="{{ tv }}">
+            </div>
+            <div class="input-group">
+                <label for="radio">Chi phí quảng cáo Radio:</label>
+                <input type="number" id="radio" name="radio" step="0.01" required value="{{ radio }}">
+            </div>
+            <div class="input-group">
+                <label for="newspaper">Chi phí quảng cáo Báo:</label>
+                <input type="number" id="newspaper" name="newspaper" step="0.01" required value="{{ newspaper }}">
+            </div>
+            <div class="input-group">
+                <label for="model">Chọn thuật toán:</label>
+                <select id="model" name="model" required>
+                    <option value="linear_regression" {% if model_choice == 'linear_regression' %}selected{% endif %}>Hồi quy tuyến tính</option>
+                    <option value="knn" {% if model_choice == 'knn' %}selected{% endif %}>KNN</option>
+                    <option value="svr" {% if model_choice == 'svr' %}selected{% endif %}>SVR</option>
+                    <option value="random_forest" {% if model_choice == 'random_forest' %}selected{% endif %}>Random Forest</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <button type="submit">Dự đoán</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
+    <title>Kết quả dự đoán</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Kết quả dự đoán doanh số bán hàng</h1>
+        <p>Doanh số dự đoán: <strong>{{ prediction | round(2) }}</strong></p> 
+        <a href="/">Quay lại</a>
+    </div>
+</body>
+</html>
